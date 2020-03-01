@@ -158,7 +158,6 @@ function *(M::AbstractMatrix,A::AbstractDerivativeOperator)
     return y
 end
 
-
 function *(A::AbstractDerivativeOperator,B::AbstractDerivativeOperator)
     return BandedMatrix(A)*BandedMatrix(B)
 end

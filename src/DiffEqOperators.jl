@@ -1,6 +1,6 @@
 module DiffEqOperators
 
-import Base: +, -, *, /, \, size, getindex, setindex!, Matrix, convert, ==
+import Base: +, -, *, /, \, ∘, size, getindex, setindex!, Matrix, convert, ==
 using DiffEqBase, StaticArrays, LinearAlgebra
 import LinearAlgebra: mul!, ldiv!, lmul!, rmul!, axpy!, opnorm, factorize, I
 import DiffEqBase: AbstractDiffEqLinearOperator, update_coefficients!, isconstant
@@ -38,6 +38,10 @@ include("derivative_operators/coefficient_functions.jl")
 ### Composite Operators
 include("composite_operators.jl")
 
+### Matrix Operators
+include("matrix_operators/diagonal_operator.jl")
+include("matrix_operators/concretizations.jl")
+
 include("MOL_discretization.jl")
 
 include("docstrings.jl")
@@ -56,5 +60,6 @@ export DirichletBC, Dirichlet0BC, NeumannBC, Neumann0BC, RobinBC, GeneralBC, Mul
        MultiDimDirectionalBC, ComposedMultiDimBC,
        compose, decompose, perpsize
 export GhostDerivativeOperator
+export DiagonalOperator, IdentityOperator
 export MOLFiniteDifference
 end # module
